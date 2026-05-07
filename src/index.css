@@ -1,0 +1,59 @@
+@import "tailwindcss";
+body {
+  margin: 0;
+  font-family: 'Bebas Neue', sans-serif;
+}
+
+#root {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+h1,
+h2 {
+  font-weight: 500;
+}
+
+h1 {
+    font-size: 490px;
+    letter-spacing: -1.68px;
+    margin: 32px 0;
+    color: #7c750e;
+     font-family: 'Bebas Neue', sans-serif;
+}
+
+h1, h2, h3, h4 {
+     font-family: 'Bebas Neue', sans-serif;
+}
+.revEnergy {
+  color: #7c750e14;
+}
+h2 {
+  line-height: 118%;
+  letter-spacing: -0.24px;
+  margin: 0 0 8px;
+}
+p {
+  margin: 0;
+}
+
+p,
+span, 
+button, h5 {
+   font-family: 'DM Sans', sans-serif;
+}
+
+button {
+  font-weight: 500;
+}
+
+
+.exploreText h2 span {
+  font-family: 'Bebas Neue', sans-serif;
+}
