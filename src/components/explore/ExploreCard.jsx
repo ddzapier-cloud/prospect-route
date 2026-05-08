@@ -10,7 +10,7 @@ const ExploreCard = ({
   tagBgColor
 }) => {
   return (
-    <div className="max-w-[350px] bg-white rounded-lg shadow-lg p-4 flex flex-col">
+    <div className="max-w-full md:max-w-82 bg-white rounded-lg shadow-lg p-4 flex flex-col">
       
       <img src={image} alt={title} className="w-full mb-4 rounded-[10px]" />
 
@@ -37,7 +37,7 @@ const ExploreCard = ({
           {price}
         </h4>
 
-        <button className="relative z-40 rounded-[25px_0] bg-[#fff200] px-[40px] py-[12px] text-[18px] font-bold text-black">
+        <button className="relative z-40 rounded-[25px_0] bg-[#fff200] px-10 py-3 text-[18px] font-bold text-black">
           Shop Now
         </button>
       </div>

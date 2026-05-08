@@ -54,6 +54,50 @@ button {
 }
 
 
-.exploreText h2 span {
+.exploreText h2 span,
+.featMain-praoduct h2 span,
+.headingText h2 span,
+.headingText h2 span {
   font-family: 'Bebas Neue', sans-serif;
+}
+
+
+@media screen and (max-width: 1100px) {
+  h1 {
+    font-size: 350px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  h1 {
+    font-size: 240px;
+  }
+  .heroImg-parent-row {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    top: 0;
+    justify-content: center;
+    margin: auto;
+    align-items: center;
+    top: 500px;
+  }
+  .heroImg-parent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  } 
+  .exploreMain {
+    margin-top: -530px;
+  }
+  h2, h2 span {
+    font-size: 44px;
+  }
+
+}
+
+@media screen and (max-width: 480px) {
+  h1 {
+    font-size: 140px;
+  }
 }

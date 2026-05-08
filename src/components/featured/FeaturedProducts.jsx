@@ -2,9 +2,11 @@ import React, { useState } from 'react';
 
 import orangeBottle from '../../assets/bottle.png';
 import orangeTop from '../../assets/orange-top.png';
-import hourIcon from '../../assets/hour.png'; // Hour icon
-import coffeeIcon from '../../assets/coffee.png'; // Coffee icon
-import orangeIcon from '../../assets/orange.png'; // Orange icon
+import hourIcon from '../../assets/hour.png';
+import coffeeIcon from '../../assets/coffee.png'; 
+import orangeIcon from '../../assets/orange.png'; 
+import arrowNext from '../../assets/arrow-next.png'
+import arrowPrev from '../../assets/arrow-prev.png'
 
 const slides = [
   {
@@ -91,22 +93,22 @@ const FeaturedProducts = () => {
   };
 
   return (
-    <section className="w-full overflow-hidden px-4 py-14 md:px-8 md:py-20">
-      <div className="relative mx-auto max-w-[1180px]">
-        <div className="relative z-20 text-center">
+    <section className="featMain-praoduct w-full overflow-hidden">
+      <div className="relative mx-auto">
+        <div className="relative z-20 text-center flex items-center justify-center m-auto flex-col max-w-215">
           <img
             src={slide.topImage}
             alt=""
-            className="mx-auto mb-4 h-[64px] w-[90px] object-contain md:h-[88px] md:w-[120px]"
+            className="mx-auto mb-4 h-16 w-22.5 object-contain md:h-22 md:w-30"
           />
 
-          <h2 className="mx-auto max-w-[760px] text-[30px] font-black uppercase leading-tight text-[#454545] md:text-[46px]">
+          <h2 className="text-[64px] uppercase font-medium mx-auto leading-tight text-[#454545]">
             Explore Our{' '}
-            <span className="text-[#e7d500]">Featured Products</span> To Power
+            <span className="text-[#e7d500] text-[64px] uppercase font-medium">Featured Products</span> To Power
             Through Your Day
           </h2>
 
-          <p className="mx-auto mt-4 max-w-[620px] text-[13px] leading-5 text-[#777]">
+          <p className="mx-auto mt-4 max-w-[620px] text-[18px] leading-5 text-[#777]">
             Discover our premium selection of 5-hour ENERGY shots, crafted to deliver
             long-lasting energy and mental clarity.
           </p>
@@ -122,12 +124,12 @@ const FeaturedProducts = () => {
                   className="h-[46px] w-[46px] shrink-0 object-contain"
                 />
 
-                <div>
-                  <h3 className="text-left text-[22px] font-black uppercase leading-none text-[#444]">
+                <div className='featuredHou-title'>
+                  <h3 className="text-left text-[22px] font-black uppercase leading-none font-normal text-[#444]">
                     {item.title}
                   </h3>
 
-                  <p className="mt-2 text-left text-[13px] leading-5 text-[#777]">
+                  <p className="mt-2 text-left text-[18px] leading-5 text-[#777]">
                     {item.text}
                   </p>
                 </div>
@@ -147,11 +149,11 @@ const FeaturedProducts = () => {
           </div>
 
           <div className="order-3 flex flex-col items-start text-left">
-            <p className="max-w-[360px] text-[13px] leading-5 text-[#777]">
+            <p className="max-w-[360px] text-[18px] leading-5 text-[#777]">
               {slide.description}
             </p>
 
-            <button className="mt-5 rounded-br-2xl rounded-tl-2xl bg-[#f4df00] px-6 py-3 text-[13px] font-bold text-black">
+            <button className="mt-5 rounded-br-2xl rounded-tl-2xl bg-[#f4df00] px-6 py-3 text-[18px] font-bold text-black">
               Shop Now
             </button>
 
@@ -160,14 +162,14 @@ const FeaturedProducts = () => {
                 onClick={prevSlide}
                 className="flex h-9 w-9 items-center justify-center rounded-full border border-black/10 bg-white text-lg text-black"
               >
-                ←
+                <img src={arrowPrev} />
               </button>
 
               <button
                 onClick={nextSlide}
                 className="flex h-9 w-9 items-center justify-center rounded-full bg-[#f4df00] text-lg text-black"
               >
-                →
+                <img src={arrowNext} />
               </button>
             </div>
           </div>

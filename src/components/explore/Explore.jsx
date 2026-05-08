@@ -8,10 +8,10 @@ import bottleFourth from '../../assets/explore/fourth-product.png';
 
 const Explore = () => {
   return (
-    <div className='exploreMain'>
+    <div className='exploreMain mt-[-650px]'>
         <div className='exploreText'>
-            <div className='flex flex-col items-center text-center max-w-[1040px] mx-auto'>
-                <h2 className="text-[#fff] text-[64px] uppercase font-medium max-w-[830px]">
+            <div className='flex flex-col items-center text-center max-w-260 mx-auto mb-10'>
+                <h2 className="text-[#fff] text-[64px] uppercase font-medium max-w-207.5">
                     Explore Our Range of <span className="text-[#E0D000] text-[64px] uppercase font-medium">Energy-Boosting Shots</span> for Every Need
                 </h2>
                 <p className="relative z-40 mt-3 px-4 text-[18px] text-white/60">
@@ -20,7 +20,7 @@ const Explore = () => {
                 <ShopBtn />
             </div>
         
-            <div className="flex flex-wrap justify-center gap-8 p-8">
+            <div className="flex flex-wrap justify-between">
                 <ExploreCard
                     image={bottleFirst}
                     title="Orange Flavor"
@@ -63,5 +63,4 @@ const Explore = () => {
     
   );
 }
-
 export default Explore;
