@@ -64,7 +64,7 @@ const PromoSection = () => {
               className="absolute bottom-0 left-0 z-10 h-[70%] w-full object-contain object-bottom"
             />
 
-            <div className="absolute bottom-4 right-7.5 z-30 w-137.5] rotate-338 overflow-hidden bg-white py-1 md:w-110">
+            <div className="absolute bottom-4 right-[-40px] z-30 w-137.5 rotate-338 overflow-hidden bg-white py-1 md:w-110">
               <div className="flex w-max animate-[marquee_8s_linear_infinite] items-center gap-6 whitespace-nowrap text-[16px] font-black uppercase text-black">
                 <img src={FocusImg} alt="Focus" className="w-25 h-12.5 object-contain" />
                 <img src={EnergyImg} alt="Energy" className="w-25 h-12.5 object-contain" />
