@@ -10,6 +10,7 @@ import Tasks from './pages/Tasks'
 import Navbar from './components/Navbar'
 import Home from './pages/home/Home'
 import './App.css'
+import UserDetail from './pages/UserDetail'
 
 function App() {
   const [user, setUser] = useState(null)
@@ -41,6 +42,7 @@ function App() {
             <Routes>
               <Route path="/" element={<Navigate to="/dashboard" />} />
               <Route path="/dashboard" element={<Dashboard user={user} />} />
+              <Route path="/users/:id" element={<UserDetail />} />
               <Route path="/users" element={<Users />} />
               <Route path="/tasks" element={<Tasks user={user} />} />
               <Route path="*" element={<Navigate to="/dashboard" />} />

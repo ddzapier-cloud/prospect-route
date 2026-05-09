@@ -24,11 +24,11 @@ function Signup() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 to-slate-700 flex items-center justify-center px-4">
+    <div className="min-h-screen bg-linea-to-br from-slate-900 to-slate-700 flex items-center justify-center px-4">
       <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md p-10">
         <h2 className="text-3xl font-bold text-slate-800 mb-2">Create account</h2>
         <p className="text-slate-500 mb-8 text-sm">Sign up to get started</p>
-        {error && <div className="bg-red-50 text-red-600 text-sm px-4 py-3 rounded-lg mb-4">{error}</div>}
+        {error && <div className="bg-red-50 text-red-600 text-sm px-4r py-3 rounded-lg mb-4">{error}</div>}
         <form onSubmit={handleSignup} className="flex flex-col gap-4">
           <input
             type="email"

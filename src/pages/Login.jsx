@@ -16,7 +16,7 @@ function Login({ onClose }) {
     setLoading(true)
     try {
       await signInWithEmailAndPassword(auth, email, password)
-      if (onClose) onClose() // ✅ login ke baad modal band
+      if (onClose) onClose() 
     } catch {
       setError('Invalid email or password')
     }
@@ -29,18 +29,11 @@ function Login({ onClose }) {
       {/* Close Button */}
       <button
         onClick={onClose}
-        style={{
-          position: 'absolute', top: '16px', right: '16px',
-          background: '#f1f5f9', border: 'none', borderRadius: '50%',
-          width: '32px', height: '32px', cursor: 'pointer',
-          fontSize: '16px', display: 'flex', alignItems: 'center', justifyContent: 'center'
-        }}
       >
         ✕
       </button>
 
-      <h2 className="text-3xl font-bold text-slate-800 mb-2">Welcome back</h2>
-      <p className="text-slate-500 mb-8 text-sm">Login to your account</p>
+
 
       {error && (
         <div className="bg-red-50 text-red-600 text-sm px-4 py-3 rounded-lg mb-4">{error}</div>
