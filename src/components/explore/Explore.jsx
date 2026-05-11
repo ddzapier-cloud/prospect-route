@@ -10,7 +10,7 @@ const Explore = () => {
   return (
     <div className='exploreMain mt-[-650px]'>
         <div className='exploreText'>
-            <div className='flex flex-col items-center text-center max-w-260 mx-auto mb-10'>
+            <div className='exploreHeading-range flex flex-col items-center text-center max-w-260 mx-auto mb-10'>
                 <h2 className="text-[#fff] text-[64px] uppercase font-medium max-w-207.5">
                     Explore Our Range of <span className="text-[#E0D000] text-[64px] uppercase font-medium">Energy-Boosting Shots</span> for Every Need
                 </h2>
@@ -20,7 +20,7 @@ const Explore = () => {
                 <ShopBtn />
             </div>
         
-            <div className="flex flex-wrap justify-between">
+            <div className="exploreHeading-cards flex md:flex-nowrap flex-wrap justify-between">
                 <ExploreCard
                     image={bottleFirst}
                     title="Orange Flavor"

@@ -61,10 +61,25 @@ button {
   font-family: 'Bebas Neue', sans-serif;
 }
 
+@media screen and (max-width: 1440px) {
+      .exploreMain {
+        margin-top: -350px;
+    }
+}
 
 @media screen and (max-width: 1100px) {
   h1 {
     font-size: 350px;
+  }
+}
+@media screen and (max-width: 991px) {
+  .exploreHeading-cards {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+  .exploreHeading-cards-items{
+    margin-bottom: 20px;
   }
 }
 

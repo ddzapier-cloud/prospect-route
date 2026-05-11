@@ -78,6 +78,45 @@ function Tasks({ user }) {
           </div>
         </div>
 
+
+
+
+        {/* Progress Bar */}
+        <div style={{ background: 'white', borderRadius: '20px', border: '1px solid #e2e8f0', padding: '24px', marginBottom: '24px' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '12px' }}>
+            <span style={{ fontSize: '14px', fontWeight: '700', color: '#0f172a' }}>Overall Progress</span>
+            <span style={{ fontSize: '13px', fontWeight: '600', color: '#6366f1' }}>
+              {tasks.length === 0 ? 0 : Math.round((tasks.filter(t => t.status === 'Completed').length / tasks.length) * 100)}%
+            </span>
+          </div>
+
+          {/* Bar */}
+          <div style={{ background: '#f1f5f9', borderRadius: '999px', height: '10px', overflow: 'hidden' }}>
+            <div style={{
+              height: '100%',
+              borderRadius: '999px',
+              background: 'linear-gradient(90deg, #6366f1, #22c55e)',
+              width: `${tasks.length === 0 ? 0 : Math.round((tasks.filter(t => t.status === 'Completed').length / tasks.length) * 100)}%`,
+              transition: 'width 0.5s ease'
+            }} />
+          </div>
+
+          {/* Stats */}
+          <div style={{ display: 'flex', gap: '20px', marginTop: '14px' }}>
+            <span style={{ fontSize: '12px', color: '#94a3b8' }}>
+              ✅ <strong style={{ color: '#16a34a' }}>{tasks.filter(t => t.status === 'Completed').length}</strong> Completed
+            </span>
+            <span style={{ fontSize: '12px', color: '#94a3b8' }}>
+              ⏳ <strong style={{ color: '#ca8a04' }}>{tasks.filter(t => t.status === 'Pending').length}</strong> Pending
+            </span>
+            <span style={{ fontSize: '12px', color: '#94a3b8' }}>
+              📋 <strong style={{ color: '#6366f1' }}>{tasks.length}</strong> Total
+            </span>
+          </div>
+        </div>
+
+
+
         {/* Form */}
         <TaskForm onAdd={handleAdd} />
 

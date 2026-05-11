@@ -10,7 +10,7 @@ const ExploreCard = ({
   tagBgColor
 }) => {
   return (
-    <div className="max-w-full md:max-w-82 bg-white rounded-lg shadow-lg p-4 flex flex-col">
+    <div className="exploreHeading-cards-items max-w-full md:max-w-82 bg-white rounded-lg shadow-lg p-4 flex flex-col">
       
       <img src={image} alt={title} className="w-full mb-4 rounded-[10px]" />
 
