@@ -57,85 +57,92 @@ function Tasks({ user }) {
   if (sort === 'az') filtered = [...filtered].sort((a, b) => a.title.localeCompare(b.title))
   else filtered = [...filtered].sort((a, b) => b.id - a.id)
 
-  const btnBase = { borderRadius: '10px', padding: '10px 16px', fontSize: '13px', fontWeight: '600', cursor: 'pointer', border: '1px solid #e2e8f0' }
+  const btnBase = "rounded-lg border px-4 py-2 text-sm font-semibold cursor-pointer"
 
   return (
-    <div style={{ minHeight: '100vh', background: '#f8fafc', padding: '40px 32px' }}>
+    <div className="min-h-screen bg-slate-50 px-8 py-10">
       <Toast toasts={toasts} />
       {editTask && <EditModal task={editTask} onClose={() => setEditTask(null)} onSave={handleSaveEdit} />}
       {deleteId && <DeleteModal onClose={() => setDeleteId(null)} onConfirm={confirmDelete} />}
 
-      <div style={{ maxWidth: '780px', margin: '0 auto' }}>
+      <div className="max-w-3xl mx-auto">
 
         {/* Header */}
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '32px' }}>
+        <div className="flex items-center justify-between mb-8">
           <div>
-            <h2 style={{ fontSize: '28px', fontWeight: '800', color: '#0f172a', marginBottom: '4px' }}>My Tasks</h2>
-            <p style={{ color: '#94a3b8', fontSize: '14px' }}>Manage your personal tasks</p>
+            <h2 className="font-bold text-slate-800 text-left text-6xl">My Tasks</h2>
+            <p className="text-slate-500 text-sm">Manage your personal tasks</p>
           </div>
-          <div style={{ background: '#6366f1', color: 'white', borderRadius: '12px', padding: '8px 18px', fontSize: '14px', fontWeight: '700' }}>
+          <div className="bg-indigo-600 text-white rounded-full px-6 py-2 text-sm font-semibold">
             {tasks.length} Task{tasks.length !== 1 ? 's' : ''}
           </div>
         </div>
 
-
-
-
         {/* Progress Bar */}
-        <div style={{ background: 'white', borderRadius: '20px', border: '1px solid #e2e8f0', padding: '24px', marginBottom: '24px' }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '12px' }}>
-            <span style={{ fontSize: '14px', fontWeight: '700', color: '#0f172a' }}>Overall Progress</span>
-            <span style={{ fontSize: '13px', fontWeight: '600', color: '#6366f1' }}>
+        <div className="bg-white rounded-2xl border border-slate-200 p-6 mb-6">
+          <div className="flex justify-between items-center mb-3">
+            <span className="text-sm font-semibold text-slate-900">Overall Progress</span>
+            <span className="text-sm font-semibold text-indigo-600">
               {tasks.length === 0 ? 0 : Math.round((tasks.filter(t => t.status === 'Completed').length / tasks.length) * 100)}%
             </span>
           </div>
 
           {/* Bar */}
-          <div style={{ background: '#f1f5f9', borderRadius: '999px', height: '10px', overflow: 'hidden' }}>
-            <div style={{
-              height: '100%',
-              borderRadius: '999px',
-              background: 'linear-gradient(90deg, #6366f1, #22c55e)',
-              width: `${tasks.length === 0 ? 0 : Math.round((tasks.filter(t => t.status === 'Completed').length / tasks.length) * 100)}%`,
-              transition: 'width 0.5s ease'
-            }} />
+          <div className="h-2.5 overflow-hidden rounded-full bg-slate-100">
+            <div
+              className="h-full rounded-full bg-gradient-to-r from-indigo-500 to-green-500 transition-all duration-500"
+              style={{
+                width: `${tasks.length === 0 ? 0 : Math.round((tasks.filter(t => t.status === 'Completed').length / tasks.length) * 100)}%`
+              }}
+            />
           </div>
 
           {/* Stats */}
-          <div style={{ display: 'flex', gap: '20px', marginTop: '14px' }}>
-            <span style={{ fontSize: '12px', color: '#94a3b8' }}>
-              ✅ <strong style={{ color: '#16a34a' }}>{tasks.filter(t => t.status === 'Completed').length}</strong> Completed
+          <div className="flex gap-6 mt-4">
+            <span className="text-xs text-slate-500">
+              ✅ <strong className="text-green-600">{tasks.filter(t => t.status === 'Completed').length}</strong> Completed
             </span>
-            <span style={{ fontSize: '12px', color: '#94a3b8' }}>
-              ⏳ <strong style={{ color: '#ca8a04' }}>{tasks.filter(t => t.status === 'Pending').length}</strong> Pending
+            <span className="text-xs text-slate-500">
+              ⏳ <strong className="text-yellow-600">{tasks.filter(t => t.status === 'Pending').length}</strong> Pending
             </span>
-            <span style={{ fontSize: '12px', color: '#94a3b8' }}>
-              📋 <strong style={{ color: '#6366f1' }}>{tasks.length}</strong> Total
+            <span className="text-xs text-slate-500">
+              📋 <strong className="text-indigo-600">{tasks.length}</strong> Total
             </span>
           </div>
         </div>
-
-
 
         {/* Form */}
         <TaskForm onAdd={handleAdd} />
 
         {/* Search + Sort */}
-        <div style={{ display: 'flex', gap: '12px', marginBottom: '20px' }}>
-          <input type="text" placeholder="🔍 Search tasks by title..." value={search}
+        <div className="flex gap-3 mb-5">
+          <input
+            type="text"
+            placeholder="🔍 Search tasks by title..."
+            value={search}
             onChange={(e) => setSearch(e.target.value)}
-            style={{ flex: 1, border: '1px solid #e2e8f0', borderRadius: '12px', padding: '11px 16px', fontSize: '14px', outline: 'none', background: 'white' }}
+            className="flex-1 border border-slate-200 rounded-lg px-4 py-3 text-sm outline-none bg-white"
           />
-          <button onClick={() => setSort('az')} style={{ ...btnBase, background: sort === 'az' ? '#0f172a' : 'white', color: sort === 'az' ? 'white' : '#64748b' }}>A → Z</button>
-          <button onClick={() => setSort('newest')} style={{ ...btnBase, background: sort === 'newest' ? '#0f172a' : 'white', color: sort === 'newest' ? 'white' : '#64748b' }}>Newest</button>
+          <button
+            onClick={() => setSort('az')}
+            className={`${btnBase} ${sort === 'az' ? 'bg-slate-900 text-white' : 'bg-white text-slate-500'}`}
+          >
+            A → Z
+          </button>
+          <button
+            onClick={() => setSort('newest')}
+            className={`${btnBase} ${sort === 'newest' ? 'bg-slate-900 text-white' : 'bg-white text-slate-500'}`}
+          >
+            Newest
+          </button>
         </div>
 
         {/* Tasks */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
+        <div className="flex flex-col gap-4">
           {filtered.length === 0 && (
-            <div style={{ background: 'white', borderRadius: '20px', border: '1px solid #e2e8f0', padding: '60px', textAlign: 'center' }}>
-              <p style={{ fontSize: '40px', marginBottom: '12px' }}>📋</p>
-              <p style={{ color: '#94a3b8', fontSize: '14px' }}>{search ? 'No tasks match your search' : 'No tasks yet!'}</p>
+            <div className="bg-white rounded-2xl border border-slate-200 p-16 text-center">
+              <p className="text-5xl mb-3">📋</p>
+              <p className="text-slate-500 text-sm">{search ? 'No tasks match your search' : 'No tasks yet!'}</p>
             </div>
           )}
           {filtered.map(task => (
