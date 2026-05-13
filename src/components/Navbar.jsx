@@ -67,7 +67,7 @@ function Navbar({ user }) {
       {/* Bottom User */}
       <div className="px-4 pb-5">
         <div className="flex items-center gap-3 p-3 rounded-2xl bg-zinc-900 border border-zinc-800">
-          <div className="w-9 h-9 rounded-xl flex items-center justify-center bg-yellow-400 text-black font-bold text-[13px] flex-shrink-0">
+          <div className="w-9 h-9 rounded-xl flex items-center justify-center bg-yellow-400 text-black font-bold text-[13px] shrink-0">
             {user?.email?.[0]?.toUpperCase()}
           </div>
 

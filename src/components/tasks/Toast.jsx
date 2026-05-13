@@ -1,14 +1,22 @@
 function Toast({ toasts }) {
   return (
-    <div style={{ position: 'fixed', bottom: '24px', right: '24px', zIndex: 9999, display: 'flex', flexDirection: 'column', gap: '10px' }}>
+    <div className="fixed bottom-6 right-6 z-[9999] flex flex-col gap-3">
       {toasts.map(t => (
-        <div key={t.id} style={{
-          background: t.type === 'success' ? '#0f172a' : '#ef4444',
-          color: 'white', padding: '12px 20px', borderRadius: '12px',
-          fontSize: '13px', fontWeight: '600', boxShadow: '0 4px 20px rgba(0,0,0,0.15)',
-          display: 'flex', alignItems: 'center', gap: '8px'
-        }}>
-          {t.type === 'success' ? '✅' : '🗑️'} {t.message}
+        <div
+          key={t.id}
+          className={`flex items-center gap-2 rounded-xl px-5 py-3 text-[13px] font-semibold shadow-2xl border ${
+            t.type === 'success'
+              ? 'bg-zinc-900 text-white border-zinc-800'
+              : 'bg-red-600 text-white border-red-600'
+          }`}
+        >
+          <span>
+            {t.type === 'success' ? '✅' : '🗑️'}
+          </span>
+
+          <span>
+            {t.message}
+          </span>
         </div>
       ))}
     </div>
