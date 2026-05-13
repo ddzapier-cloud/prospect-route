@@ -17,76 +17,87 @@ function UserDetail() {
       } catch {
         setError('Failed to fetch user details')
       }
+
       setLoading(false)
     }
+
     fetchUser()
   }, [id])
 
-  if (loading) return (
-    <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#f8fafc' }}>
-      <div style={{ textAlign: 'center' }}>
-        <p style={{ fontSize: '40px', marginBottom: '12px' }}>⏳</p>
-        <p style={{ color: '#94a3b8', fontSize: '14px' }}>Loading user details...</p>
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-black text-white ml-[240px] flex items-center justify-center">
+        <div className="text-center bg-zinc-900 border border-zinc-800 rounded-3xl p-16">
+          <p className="text-[42px] mb-3">⏳</p>
+          <p className="text-zinc-400 text-[14px]">
+            Loading user details...
+          </p>
+        </div>
       </div>
-    </div>
-  )
+    )
+  }
 
-  if (error) return (
-    <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-      <p style={{ color: '#ef4444' }}>{error}</p>
-    </div>
-  )
+  if (error) {
+    return (
+      <div className="min-h-screen bg-black text-white ml-[240px] flex items-center justify-center">
+        <div className="bg-red-950 text-red-400 border border-red-900 px-6 py-4 rounded-xl text-[14px]">
+          ⚠️ {error}
+        </div>
+      </div>
+    )
+  }
 
   const InfoRow = ({ label, value }) => (
-    <div style={{ display: 'flex', justifyContent: 'space-between', padding: '12px 0', borderBottom: '1px solid #f1f5f9' }}>
-      <span style={{ color: '#94a3b8', fontSize: '13px', fontWeight: '500' }}>{label}</span>
-      <span style={{ color: '#0f172a', fontSize: '13px', fontWeight: '600' }}>{value || '—'}</span>
+    <div className="flex justify-between gap-4 py-3 border-b border-zinc-800 last:border-b-0">
+      <span className="text-zinc-400 text-[13px] font-medium">
+        {label}
+      </span>
+
+      <span className="text-white text-[13px] font-semibold text-right">
+        {value || '—'}
+      </span>
     </div>
   )
 
   return (
-    <div style={{ minHeight: '100vh', background: '#f8fafc', padding: '40px 32px' }}>
-      <div style={{ maxWidth: '700px', margin: '0 auto' }}>
+    <div className="min-h-screen bg-black text-white px-8 py-10">
+      <div className="max-w-200 mx-auto">
 
         {/* Back Button */}
         <button
           onClick={() => navigate('/users')}
-          style={{
-            background: 'white', border: '1px solid #e2e8f0', borderRadius: '10px',
-            padding: '9px 18px', fontSize: '13px', fontWeight: '600',
-            color: '#64748b', cursor: 'pointer', marginBottom: '28px',
-            display: 'flex', alignItems: 'center', gap: '6px'
-          }}
+          className="bg-zinc-900 text-zinc-300 border border-zinc-800 rounded-xl px-5 py-3 text-[14px] font-semibold cursor-pointer mb-8 flex items-center gap-2 hover:text-yellow-400 hover:border-yellow-400 transition"
         >
           ← Back to Users
         </button>
 
         {/* Profile Header Card */}
-        <div style={{
-          background: 'white', borderRadius: '20px', border: '1px solid #e2e8f0',
-          padding: '32px', marginBottom: '20px',
-          display: 'flex', alignItems: 'center', gap: '24px'
-        }}>
+        <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8 mb-6 flex items-center gap-6">
           <img
             src={user.image}
             alt={user.firstName}
-            style={{ width: '90px', height: '90px', borderRadius: '50%', objectFit: 'cover', border: '3px solid #e2e8f0' }}
+            className="w-24 h-24 rounded-full object-cover border-4 border-yellow-400 bg-white flex-shrink-0"
           />
+
           <div>
-            <h1 style={{ fontSize: '24px', fontWeight: '800', color: '#0f172a', marginBottom: '4px' }}>
+            <h2 className="text-[36px] font-medium text-white mb-1 leading-none">
               {user.firstName} {user.lastName}
-            </h1>
-            <p style={{ color: '#6366f1', fontSize: '14px', fontWeight: '600', marginBottom: '8px' }}>
+            </h2>
+
+            <p className="text-yellow-400 text-[15px] font-semibold mb-4 text-left mb-4">
               @{user.username}
             </p>
-            <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
-              <span style={{ background: '#f0fdf4', color: '#16a34a', fontSize: '12px', fontWeight: '600', padding: '4px 12px', borderRadius: '999px' }}>
+
+            <div className="flex gap-2 flex-wrap mt-5">
+              <span className="bg-yellow-400 text-black text-[12px] font-bold px-4 py-1 rounded-full">
                 Age: {user.age}
               </span>
-              <span style={{ background: '#eff6ff', color: '#2563eb', fontSize: '12px', fontWeight: '600', padding: '4px 12px', borderRadius: '999px' }}>
+
+              <span className="bg-zinc-800 text-zinc-200 text-[12px] font-semibold px-4 py-1 rounded-full">
                 {user.gender}
               </span>
-              <span style={{ background: '#fef9c3', color: '#ca8a04', fontSize: '12px', fontWeight: '600', padding: '4px 12px', borderRadius: '999px' }}>
+
+              <span className="bg-black border border-zinc-700 text-yellow-400 text-[12px] font-semibold px-4 py-1 rounded-full">
                 {user.role}
               </span>
             </div>
@@ -94,20 +105,22 @@ function UserDetail() {
         </div>
 
         {/* Contact Info */}
-        <div style={{ background: 'white', borderRadius: '20px', border: '1px solid #e2e8f0', padding: '28px', marginBottom: '20px' }}>
-          <h3 style={{ fontSize: '15px', fontWeight: '700', color: '#0f172a', marginBottom: '16px' }}>
+        <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-7 mb-6">
+          <h3 className="text-[30px] font-medium text-yellow-400 mb-5">
             📬 Contact Information
           </h3>
+
           <InfoRow label="Email" value={user.email} />
           <InfoRow label="Phone" value={user.phone} />
           <InfoRow label="Username" value={user.username} />
         </div>
 
         {/* Address */}
-        <div style={{ background: 'white', borderRadius: '20px', border: '1px solid #e2e8f0', padding: '28px', marginBottom: '20px' }}>
-          <h3 style={{ fontSize: '15px', fontWeight: '700', color: '#0f172a', marginBottom: '16px' }}>
+        <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-7 mb-6">
+          <h3 className="text-[30px] font-medium text-yellow-400 mb-5">
             📍 Address
           </h3>
+
           <InfoRow label="Street" value={user.address?.address} />
           <InfoRow label="City" value={user.address?.city} />
           <InfoRow label="State" value={user.address?.state} />
@@ -116,10 +129,11 @@ function UserDetail() {
         </div>
 
         {/* Company */}
-        <div style={{ background: 'white', borderRadius: '20px', border: '1px solid #e2e8f0', padding: '28px' }}>
-          <h3 style={{ fontSize: '15px', fontWeight: '700', color: '#0f172a', marginBottom: '16px' }}>
+        <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-7">
+          <h3 className="text-[30px] font-medium text-yellow-400 mb-5">
             🏢 Company
           </h3>
+
           <InfoRow label="Company Name" value={user.company?.name} />
           <InfoRow label="Department" value={user.company?.department} />
           <InfoRow label="Title" value={user.company?.title} />

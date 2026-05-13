@@ -18,136 +18,167 @@ function Users() {
       } catch {
         setError('Failed to fetch users')
       }
+
       setLoading(false)
     }
+
     fetchUsers()
   }, [])
 
-  // Search filter
   let filtered = users.filter(u =>
     `${u.firstName} ${u.lastName}`.toLowerCase().includes(search.toLowerCase()) ||
     u.email.toLowerCase().includes(search.toLowerCase())
   )
 
-  // Sorting
   if (sort === 'az') {
     filtered = [...filtered].sort((a, b) =>
-      `${a.firstName} ${a.lastName}`.localeCompare(`${b.firstName} ${b.lastName}`)
+      `${a.firstName}`.localeCompare(`${b.firstName}`)
     )
   } else if (sort === 'za') {
     filtered = [...filtered].sort((a, b) =>
-      `${b.firstName} ${b.lastName}`.localeCompare(`${a.firstName} ${a.lastName}`)
+      `${b.firstName}`.localeCompare(`${a.firstName}`)
     )
   }
 
   return (
-    <div className="min-h-screen bg-slate-50">
-      <div className="max-w-4xl mx-auto px-6 py-12">
+    <div className="min-h-screen bg-black text-white px-8 py-10">
+      <div className="max-w-[1100px] mx-auto">
 
         {/* Header */}
-        <div className="flex items-center justify-between mb-8">
-          <div>
-            <h2 className="font-bold text-slate-800 text-left text-6xl">Users</h2>
-            <p className="text-slate-400 text-sm mt-1">Fetched from DummyJSON API</p>
-          </div>
-          {!loading && (
-            <span style={{ background: '#0f172a' }} className="text-white text-sm px-4 py-2 rounded-xl font-medium">
-              {filtered.length} Users
-            </span>
-          )}
-        </div>
+        <div className="mb-8">
+          <div className="flex items-center justify-between mb-2">
+            <h2 className="text-[52px] font-medium text-white leading-none">
+              Users
+            </h2>
 
-        {/* Search + Sort Row */}
-        <div style={{ display: 'flex', gap: '12px', marginBottom: '24px' }}>
-          <input
-            type="text"
-            placeholder="🔍  Search by name or email..."
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            style={{
-              flex: 1, border: '1px solid #e2e8f0', borderRadius: '12px',
-              padding: '12px 18px', fontSize: '14px', outline: 'none',
-              background: 'white', boxShadow: '0 1px 4px rgba(0,0,0,0.05)'
-            }}
-          />
-
-          {/* Sort Buttons */}
-          <button
-            onClick={() => setSort(sort === 'az' ? 'none' : 'az')}
-            style={{
-              padding: '10px 18px', borderRadius: '12px', fontSize: '13px',
-              fontWeight: '600', cursor: 'pointer', border: '1px solid #e2e8f0',
-              background: sort === 'az' ? '#0f172a' : 'white',
-              color: sort === 'az' ? 'white' : '#64748b',
-              whiteSpace: 'nowrap'
-            }}
-          >
-            A → Z
-          </button>
-          <button
-            onClick={() => setSort(sort === 'za' ? 'none' : 'za')}
-            style={{
-              padding: '10px 18px', borderRadius: '12px', fontSize: '13px',
-              fontWeight: '600', cursor: 'pointer', border: '1px solid #e2e8f0',
-              background: sort === 'za' ? '#0f172a' : 'white',
-              color: sort === 'za' ? 'white' : '#64748b',
-              whiteSpace: 'nowrap'
-            }}
-          >
-            Z → A
-          </button>
-        </div>
-
-        {loading && (
-          <div className="text-center py-20 bg-white rounded-2xl border border-slate-100">
-            <p className="text-4xl mb-3">⏳</p>
-            <p className="text-slate-400 text-sm">Loading users...</p>
-          </div>
-        )}
-        {error && (
-          <div className="bg-red-50 text-red-600 px-4 py-3 rounded-xl text-sm">{error}</div>
-        )}
-
-        {!loading && !error && (
-          <div className="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
-            {/* Table Header */}
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr auto', background: '#0f172a', padding: '14px 24px' }}>
-              <span style={{ color: 'white', fontSize: '13px', fontWeight: '600' }}>Name</span>
-              <span style={{ color: 'white', fontSize: '13px', fontWeight: '600' }}>Email</span>
-              <span style={{ color: 'white', fontSize: '13px', fontWeight: '600' }}>Details</span>
-            </div>
-
-            {filtered.length === 0 ? (
-              <div className="text-center py-12 text-slate-400">No users found</div>
-            ) : (
-              filtered.map((u, i) => (
-                <div
-                  key={u.id}
-                  style={{
-                    display: 'grid', gridTemplateColumns: '1fr 1fr auto',
-                    padding: '14px 24px', borderBottom: '1px solid #f1f5f9',
-                    background: i % 2 !== 0 ? '#eef2ff' : '#ffffff',
-                    alignItems: 'center'
-                  }}
-                >
-                  <span style={{ color: '#0f172a', fontSize: '14px', fontWeight: '500' }}>
-                    {u.firstName} {u.lastName}
-                  </span>
-                  <span style={{ color: '#64748b', fontSize: '14px' }}>{u.email}</span>
-                  <button
-                    onClick={() => navigate(`/users/${u.id}`)}
-                    style={{
-                      background: '#6366f1', color: 'white', border: 'none',
-                      borderRadius: '8px', padding: '6px 14px', fontSize: '12px',
-                      fontWeight: '600', cursor: 'pointer'
-                    }}
-                  >
-                    View →
-                  </button>
-                </div>
-              ))
+            {!loading && (
+              <div className="bg-yellow-400 text-black rounded-xl px-5 py-2 text-[14px] font-bold">
+                {filtered.length} / {users.length} Users
+              </div>
             )}
           </div>
+
+          <p className="text-zinc-400 text-[14px]">
+            Fetched from DummyJSON API
+          </p>
+        </div>
+
+        {/* Search + Sort */}
+        <div className="flex gap-3 mb-8">
+          <div className="flex-1 relative">
+            <span className="absolute left-4 top-1/2 -translate-y-1/2 text-[16px]">
+              🔍
+            </span>
+
+            <input
+              type="text"
+              placeholder="Search by name or email..."
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              className="w-full box-border bg-zinc-900 border border-zinc-800 rounded-xl py-3 pr-4 pl-11 text-[14px] text-white outline-none placeholder:text-zinc-500 focus:border-yellow-400 transition"
+            />
+          </div>
+
+          {[{ label: 'A → Z', val: 'az' }, { label: 'Z → A', val: 'za' }].map(btn => (
+            <button
+              key={btn.val}
+              onClick={() => setSort(sort === btn.val ? 'none' : btn.val)}
+              className={`px-5 py-3 rounded-xl text-[13px] font-semibold cursor-pointer transition ${
+                sort === btn.val
+                  ? 'bg-yellow-400 text-black border border-yellow-400'
+                  : 'bg-zinc-900 text-zinc-300 border border-zinc-800 hover:text-yellow-400'
+              }`}
+            >
+              {btn.label}
+            </button>
+          ))}
+        </div>
+
+        {/* Loading */}
+        {loading && (
+          <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-20 text-center">
+            <p className="text-[40px] mb-3">⏳</p>
+            <p className="text-zinc-400 text-[14px]">
+              Loading users...
+            </p>
+          </div>
+        )}
+
+        {/* Error */}
+        {error && (
+          <div className="bg-red-950 text-red-400 border border-red-900 px-5 py-4 rounded-xl text-[14px]">
+            ⚠️ {error}
+          </div>
+        )}
+
+        {/* Users Grid */}
+        {!loading && !error && (
+          <>
+            {filtered.length === 0 ? (
+              <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-20 text-center">
+                <p className="text-[40px] mb-3">🔍</p>
+                <p className="text-zinc-400 text-[14px]">
+                  No users found for "{search}"
+                </p>
+              </div>
+            ) : (
+              <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
+                {filtered.map((u) => (
+                  <div
+                    key={u.id}
+                    className="bg-zinc-900 border border-zinc-800 rounded-3xl p-5 flex flex-col gap-4 transition hover:border-yellow-400 hover:shadow-xl"
+                  >
+                    {/* Top: Avatar + Name */}
+                    <div className="flex items-center gap-4">
+                      <img
+                        src={u.image}
+                        alt={u.firstName}
+                        className="w-[54px] h-[54px] rounded-full object-cover border-2 border-yellow-400 flex-shrink-0 bg-white"
+                      />
+
+                      <div className="overflow-hidden">
+                        <p className="text-[16px] font-bold text-white mb-1 truncate">
+                          {u.firstName} {u.lastName}
+                        </p>
+
+                        <p className="text-[12px] text-yellow-400 font-semibold">
+                          @{u.username}
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* Email */}
+                    <div className="bg-black border border-zinc-800 rounded-xl px-4 py-3 text-[12px] text-zinc-300 overflow-hidden text-ellipsis whitespace-nowrap">
+                      📧 {u.email}
+                    </div>
+
+                    {/* Badges */}
+                    <div className="flex gap-2 flex-wrap">
+                      <span className="bg-yellow-400 text-black text-[11px] font-semibold px-3 py-1 rounded-full">
+                        {u.gender}
+                      </span>
+
+                      <span className="bg-zinc-800 text-zinc-200 text-[11px] font-semibold px-3 py-1 rounded-full">
+                        Age {u.age}
+                      </span>
+
+                      <span className="bg-black border border-zinc-700 text-yellow-400 text-[11px] font-semibold px-3 py-1 rounded-full">
+                        {u.role}
+                      </span>
+                    </div>
+
+                    {/* View Button */}
+                    <button
+                      onClick={() => navigate(`/users/${u.id}`)}
+                      className="w-full bg-yellow-400 text-black border-0 rounded-xl py-3 text-[14px] font-bold cursor-pointer hover:bg-yellow-300 transition"
+                    >
+                      View Profile →
+                    </button>
+                  </div>
+                ))}
+              </div>
+            )}
+          </>
         )}
       </div>
     </div>

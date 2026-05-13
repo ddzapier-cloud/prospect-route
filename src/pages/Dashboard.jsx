@@ -1,74 +1,102 @@
 import { Link } from 'react-router-dom'
 
 function Dashboard({ user }) {
-  return (
-    <div className="min-h-screen" style={{ background: '#f1f5f9' }}>
-      <div style={{ maxWidth: '900px', margin: '0 auto', padding: '48px 32px' }}>
+  const stats = [
+    { label: 'Total Users', value: '20', icon: '👥' },
+    { label: 'Active Tasks', value: 'My Tasks', icon: '✅' },
+    { label: 'Status', value: 'Active', icon: '🟢' },
+  ]
 
-        {/* Header */}
-        <div style={{ marginBottom: '48px' }}>
-          <h1 style={{ fontSize: '32px', fontWeight: '800', color: '#0f172a', marginBottom: '10px' }}>
-            Welcome back! 👋
-          </h1>
-          <div className="inline-flex items-center gap-2"
-            style={{ background: 'white', border: '1px solid #e2e8f0', borderRadius: '999px', padding: '6px 14px' }}>
-            <span className="w-2 h-2 rounded-full inline-block" style={{ background: '#22c55e' }}></span>
-            <span style={{ color: '#64748b', fontSize: '13px' }}>{user.email}</span>
+  return (
+    <div className="min-h-screen bg-black text-white overflow-hidden">
+
+      <div className="max-w-300 mx-auto px-8 py-16 relative">
+        {/* Hero Content */}
+        <div className="relative z-10 pt-24 mb-20">
+          <h3 className="text-[64px] md:text-[90px] font-medium leading-none mb-6">
+            Welcome
+            <span className="text-yellow-400 font-semibold"> Back!</span>
+          </h3>
+
+          <p className="text-slate-300 max-w-xl text-base text-center mx-auto mb-7.5">
+            Manage your users, tasks and dashboard activity from one clean place.
+          </p>
+
+          <div className="inline-flex items-center gap-2 bg-white text-black rounded-full px-5 py-2">
+            <span className="w-2 h-2 rounded-full bg-green-500"></span>
+            <span className="text-sm font-medium">
+              {user?.email}
+            </span>
           </div>
         </div>
 
         {/* Stats Row */}
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '16px', marginBottom: '40px' }}>
-          {[
-            { label: 'Total Users', value: '20', icon: '👥', color: '#eff6ff', iconBg: '#2563eb' },
-            { label: 'Active Tasks', value: 'My Tasks', icon: '✅', color: '#f0fdf4', iconBg: '#16a34a' },
-            { label: 'Status', value: 'Active', icon: '🟢', color: '#fefce8', iconBg: '#ca8a04' },
-          ].map((stat, i) => (
-            <div key={i} style={{ background: 'white', borderRadius: '16px', padding: '20px', border: '1px solid #e2e8f0' }}>
-              <div className="flex items-center justify-between mb-3">
-                <span style={{ color: '#94a3b8', fontSize: '12px', fontWeight: '600' }}>{stat.label}</span>
-                <span style={{ fontSize: '18px' }}>{stat.icon}</span>
+        <div className="relative z-10 grid grid-cols-1 md:grid-cols-3 gap-5 mb-12">
+          {stats.map((stat, i) => (
+            <div
+              key={i}
+              className="bg-zinc-900 border border-zinc-800 rounded-3xl p-6 shadow-xl"
+            >
+              <div className="flex items-center justify-between mb-5">
+                <span className="text-zinc-400 text-sm font-medium">
+                  {stat.label}
+                </span>
+                <span className="text-2xl">{stat.icon}</span>
               </div>
-              <p style={{ color: '#0f172a', fontSize: '22px', fontWeight: '800' }}>{stat.value}</p>
+
+              <p className="text-yellow-400 text-3xl font-black">
+                {stat.value}
+              </p>
             </div>
           ))}
         </div>
 
         {/* Module Cards */}
-        <p style={{ color: '#64748b', fontSize: '12px', fontWeight: '600', letterSpacing: '0.08em', marginBottom: '16px' }}>
+        <h2 className="relative z-10 text-yellow-400 font-bold tracking-[0.25em] mb-5 text-[60px]">
           MODULES
-        </p>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
+        </h2>
+
+        <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-6">
 
           {/* Users Card */}
-          <div style={{ background: 'white', borderRadius: '20px', border: '1px solid #e2e8f0', padding: '32px', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
-            <div style={{ width: '60px', height: '60px', background: '#eff6ff', borderRadius: '16px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '28px', marginBottom: '16px' }}>
+          <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8 flex flex-col gap-5">
+            <div className="w-16 h-16 bg-yellow-400 text-black rounded-2xl flex items-center justify-center text-3xl max-auto">
               👥
             </div>
-            <h3 style={{ fontSize: '18px', fontWeight: '700', color: '#0f172a', marginBottom: '8px' }}>Users Module</h3>
-            <p style={{ color: '#94a3b8', fontSize: '13px', lineHeight: '1.6', marginBottom: '24px' }}>
+
+            <h3 className="text-[28px] font-bold text-white tracking-normal">
+              Users Module
+            </h3>
+
+            <p className="text-zinc-400 text-sm leading-relaxed">
               Browse and search users fetched from DummyJSON API.
             </p>
+
             <Link
               to="/users"
-              style={{ background: '#0f172a', color: 'white', borderRadius: '12px', padding: '12px 0', width: '100%', textAlign: 'center', textDecoration: 'none', fontSize: '14px', fontWeight: '600', display: 'block' }}
+              className="bg-yellow-400 text-black rounded-xl py-3 w-full text-center no-underline text-[18px] font-bold hover:bg-yellow-300 transition"
             >
               Go to Users →
             </Link>
           </div>
 
           {/* Tasks Card */}
-          <div style={{ background: 'white', borderRadius: '20px', border: '1px solid #e2e8f0', padding: '32px', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
-            <div style={{ width: '60px', height: '60px', background: '#f0fdf4', borderRadius: '16px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '28px', marginBottom: '16px' }}>
+          <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8 flex flex-col gap-5">
+            <div className="w-16 h-16 bg-yellow-400 text-black rounded-2xl flex items-center justify-center text-3xl mx-auto">
               ✅
             </div>
-            <h3 style={{ fontSize: '18px', fontWeight: '700', color: '#0f172a', marginBottom: '8px' }}>Tasks Module</h3>
-            <p style={{ color: '#94a3b8', fontSize: '13px', lineHeight: '1.6', marginBottom: '24px' }}>
+
+            <h3 className="text-[28px] font-bold text-white tracking-normal">
+              Tasks Module
+            </h3>
+
+            <p className="text-zinc-400 text-sm leading-relaxed">
               Create, manage and track your personal tasks.
             </p>
+
             <Link
               to="/tasks"
-              style={{ background: '#0f172a', color: 'white', borderRadius: '12px', padding: '12px 0', width: '100%', textAlign: 'center', textDecoration: 'none', fontSize: '14px', fontWeight: '600', display: 'block' }}
+              className="bg-yellow-400 text-black rounded-xl py-3 w-full text-center no-underline text-[18px] font-bold hover:bg-yellow-300 transition"
             >
               Go to Tasks →
             </Link>
