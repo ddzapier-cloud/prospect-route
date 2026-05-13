@@ -18,9 +18,9 @@ function Dashboard({ user }) {
             <span className="text-yellow-400 font-semibold"> Back!</span>
           </h3>
 
-          <p className="text-slate-300 max-w-xl text-base text-center mx-auto mb-7.5">
-            Manage your users, tasks and dashboard activity from one clean place.
-          </p>
+          <p className="text-slate-300 max-w-xl text-base text-center mb-[30px] mx-auto">
+  Manage your users, tasks and dashboard activity from one clean place.
+</p>
 
           <div className="inline-flex items-center gap-2 bg-white text-black rounded-full px-5 py-2">
             <span className="w-2 h-2 rounded-full bg-green-500"></span>
@@ -60,7 +60,7 @@ function Dashboard({ user }) {
 
           {/* Users Card */}
           <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8 flex flex-col gap-5">
-            <div className="w-16 h-16 bg-yellow-400 text-black rounded-2xl flex items-center justify-center text-3xl max-auto">
+            <div className="w-16 h-16 bg-yellow-400 text-black rounded-2xl flex items-center justify-center text-3xl mx-auto">
               👥
             </div>
 
