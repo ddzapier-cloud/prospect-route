@@ -75,7 +75,7 @@ function Navbar({ user }) {
             <p className="text-white text-[12px] font-semibold whitespace-nowrap overflow-hidden text-ellipsis">
               {user?.email}
             </p>
-            <p className="text-green-500 text-[11px]">
+            <p className="text-green-500 text-[11px] text-left">
               ● Online
             </p>
           </div>
