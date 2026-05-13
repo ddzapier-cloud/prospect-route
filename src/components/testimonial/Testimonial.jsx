@@ -93,7 +93,7 @@ const testimonial = () => {
   }, [])
 
   return (
-    <div className="w-full py-10 mt-[80px]">
+    <div className="w-full py-10 mt-20">
       <div style={{ width:'100%', overflow:'hidden' }}>
         <div style={{
           display: 'flex',

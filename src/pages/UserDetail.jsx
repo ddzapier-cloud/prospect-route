@@ -76,7 +76,7 @@ function UserDetail() {
           <img
             src={user.image}
             alt={user.firstName}
-            className="w-24 h-24 rounded-full object-cover border-4 border-yellow-400 bg-white flex-shrink-0"
+            className="w-24 h-24 rounded-full object-cover border-4 border-yellow-400 bg-white shrink-0"
           />
 
           <div>
@@ -84,7 +84,7 @@ function UserDetail() {
               {user.firstName} {user.lastName}
             </h2>
 
-            <p className="text-yellow-400 text-[15px] font-semibold mb-4 text-left mb-4">
+            <p className="text-yellow-400 text-[15px] font-semibold text-left mb-4">
               @{user.username}
             </p>
 

@@ -42,7 +42,7 @@ function Users() {
 
   return (
     <div className="min-h-screen bg-black text-white px-8 py-10">
-      <div className="max-w-[1100px] mx-auto">
+      <div className="max-w-275 mx-auto">
 
         {/* Header */}
         <div className="mb-8">
@@ -133,7 +133,7 @@ function Users() {
                       <img
                         src={u.image}
                         alt={u.firstName}
-                        className="w-[54px] h-[54px] rounded-full object-cover border-2 border-yellow-400 flex-shrink-0 bg-white"
+                        className="w-13.5 h-13.5 rounded-full object-cover border-2 border-yellow-400 shrink-0 bg-white"
                       />
 
                       <div className="overflow-hidden">

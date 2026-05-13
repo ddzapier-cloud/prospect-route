@@ -18,13 +18,13 @@ function Navbar({ user }) {
   ]
 
   return (
-    <div className="fixed top-0 left-0 h-screen w-[240px] bg-black border-r border-zinc-800 flex flex-col justify-between">
+    <div className="fixed top-0 left-0 h-screen w-60 bg-black border-r border-zinc-800 flex flex-col justify-between">
 
       {/* Top */}
       <div>
         {/* Logo */}
         <div className="flex items-center gap-3 px-6 py-5 border-b border-zinc-800">
-          <div className="w-9 h-9 rounded-xl flex items-center justify-center bg-yellow-400 text-black font-bold text-[16px] flex-shrink-0">
+          <div className="w-9 h-9 rounded-xl flex items-center justify-center bg-yellow-400 text-black font-bold text-[16px] shrink-0">
             P
           </div>
 
@@ -47,7 +47,7 @@ function Navbar({ user }) {
               <Link
                 key={link.to}
                 to={link.to}
-                className={`flex items-center gap-3 no-underline transition-all px-[14px] py-[10px] rounded-xl text-[14px] ${
+                className={`flex items-center gap-3 no-underline transition-all px-3.5 py-2.5] rounded-xl text-[14px] ${
                   isActive
                     ? 'bg-yellow-400 text-black font-semibold'
                     : 'text-zinc-300 font-medium hover:bg-zinc-900 hover:text-yellow-400'

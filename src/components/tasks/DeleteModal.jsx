@@ -4,9 +4,9 @@ function DeleteModal({ onClose, onConfirm }) {
       onClick={(e) => {
         if (e.target === e.currentTarget) onClose()
       }}
-      className="fixed inset-0 bg-black/60 flex items-center justify-center z-[999] backdrop-blur-sm px-4"
+      className="fixed inset-0 bg-black/60 flex items-center justify-center z-999 backdrop-blur-sm px-4"
     >
-      <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-9 w-full max-w-[380px] text-center shadow-2xl">
+      <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-9 w-full max-w-95 text-center shadow-2xl">
         <p className="text-[44px] mb-3">
           🗑️
         </p>

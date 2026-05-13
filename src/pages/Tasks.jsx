@@ -108,7 +108,7 @@ function Tasks({ user }) {
         />
       )}
 
-      <div className="max-w-[900px] mx-auto">
+      <div className="max-w-225 mx-auto">
 
         {/* Header */}
         <div className="flex items-center justify-between mb-8">
