@@ -10,6 +10,7 @@ function Tasks({ user }) {
   const [tasks, setTasks] = useState([])
   const [search, setSearch] = useState('')
   const [sort, setSort] = useState('newest')
+  const [filter, setFilter] = useState('all')
   const [editTask, setEditTask] = useState(null)
   const [deleteId, setDeleteId] = useState(null)
   const [toasts, setToasts] = useState([])
@@ -75,6 +76,10 @@ function Tasks({ user }) {
     t.title.toLowerCase().includes(search.toLowerCase())
   )
 
+  if (filter !== 'all') {
+    filtered = filtered.filter(t => t.status === filter)
+  }
+
   if (sort === 'az') {
     filtered = [...filtered].sort((a, b) => a.title.localeCompare(b.title))
   } else {
@@ -88,6 +93,13 @@ function Tasks({ user }) {
 
   const btnBase =
     'rounded-xl border px-5 py-3 text-[13px] font-semibold cursor-pointer transition'
+
+
+    const filters = [
+  { label: 'All', value: 'all' },
+  { label: 'Pending', value: 'Pending' },
+  { label: 'Completed', value: 'Completed' },
+]
 
   return (
     <div className="min-h-screen bg-black text-white px-8 py-10">
@@ -178,6 +190,25 @@ function Tasks({ user }) {
         {/* Form */}
         <div className="mb-6">
           <TaskForm onAdd={handleAdd} />
+        </div>
+
+
+
+        {/* Filter Buttons */}
+        <div className="flex gap-3 mb-6 flex-wrap">
+          {filters.map(item => (
+            <button
+              key={item.value}
+              onClick={() => setFilter(item.value)}
+              className={`rounded-xl border px-5 py-3 text-[13px] font-semibold cursor-pointer transition ${
+                filter === item.value
+                  ? 'bg-yellow-400 text-black border-yellow-400'
+                  : 'bg-zinc-900 text-zinc-300 border-zinc-800 hover:text-yellow-400 hover:border-yellow-400'
+              }`}
+            >
+              {item.label}
+            </button>
+          ))}
         </div>
 
         {/* Search + Sort */}
